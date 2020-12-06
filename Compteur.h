@@ -7,5 +7,8 @@
  * @brief Le compteur de point
  * Structures de données et algorithmes - DUT1 Paris Descartes
  */
-unsigned int Compteur();
+ /**
+  * @brief Affichage d'une date
+  */
+void Compteur();
 #endif
