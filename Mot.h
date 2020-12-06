@@ -17,7 +17,7 @@ typedef char Mot[LGMOT + 1];
 
 /**
 * @brief Recupère le mot saisi
-* @param[in] id : le mot a recupérer
+* @param[in] id : le conteneur du Mot
 */
 void saisir(Mot id);
 
