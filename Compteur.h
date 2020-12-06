@@ -8,7 +8,7 @@
  * Structures de données et algorithmes - DUT1 Paris Descartes
  */
  /**
-  * @brief Affichage d'une date
+  * @brief Compte le nombre de point de la liste saisi
   */
 void Compteur();
 #endif
