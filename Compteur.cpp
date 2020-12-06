@@ -10,7 +10,10 @@
  * @brief Le Compteur de point
  * Structures de données et algorithmes - DUT1 Paris Descartes
  */
-unsigned int Compteur() {
+/**
+* @brief Compte le nombre de point de la liste saisi
+*/
+void Compteur() {
 	Mot buffer;
 	unsigned int NbPoint = 0;
 	unsigned int Taille;
@@ -42,5 +45,4 @@ unsigned int Compteur() {
 		}
 	} while (strcmp(buffer, "*") == 1);
 	std::cout << NbPoint;
-	return 0;
 }
