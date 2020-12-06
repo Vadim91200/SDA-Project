@@ -9,16 +9,17 @@
 
 #include "Mot.h"
 #include <iostream>
-  /**
-  * @brief Saisie d'un Mot
-  */
+/**
+* @brief Recupère le mot saisi
+* @param[in] id : le conteneur du Mot
+*/
 void saisir(Mot id) {
 	std::cin >> id;
 }
 
 /**
  * @brief Affiche un Mot
- * @param[in] d : la date à afficher
+ * @param[in] d : le Mot à afficher
  */
 void afficher(char* d) {
 	for (unsigned int i = 0; i < strlen(d); i++)
