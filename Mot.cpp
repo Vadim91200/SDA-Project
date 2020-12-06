@@ -10,15 +10,14 @@
 #include "Mot.h"
 #include <iostream>
   /**
-  * @brief Saisie d'une date
-  * @return la date saisie
+  * @brief Saisie d'un Mot
   */
 void saisir(Mot id) {
 	std::cin >> id;
 }
 
 /**
- * @brief Affiche une date
+ * @brief Affiche un Mot
  * @param[in] d : la date à afficher
  */
 void afficher(char* d) {
