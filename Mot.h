@@ -1,6 +1,4 @@
-#ifndef _DATE_
-#define _DATE_
-#define LGMOT 30
+#pragma once
 /**
  * @file Mot.h
  * Projet SDA_Boggle
@@ -9,9 +7,9 @@
  * @brief Composant de Mot
  * Structures de données et algorithmes - DUT1 Paris Descartes
  */
-
+#define LGMOT 30
  /**
-  * @brief Structure de données de type Date
+  * @brief Structure de données de type Mot
  */
 typedef char Mot[LGMOT + 1];
 
@@ -26,4 +24,4 @@ void saisir(Mot id);
  * @param[in] d : le Mot à afficher
  */
 void afficher(char* d);
-#endif
+
