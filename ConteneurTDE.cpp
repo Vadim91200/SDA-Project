@@ -1,55 +1,61 @@
-#pragma once
-
-#include "Mot.h"
+#include <iostream>
+#include <cassert>
+#include "conteneurTDE.h"
 #include "Item.h"
+#include "Mot.h"
+#pragma warning(disable : 4996) 
+using namespace std;
 
-/** @brief Conteneur d'items alloués en mémoire dynamique
- *  de capacité extensible suivant un pas d'extension
- */
-struct ConteneurTDE {
-    unsigned int capacite;        // capacité du conteneur (>0)
-    unsigned int pasExtension; // pas d'extension du conteneur (>0)
-    Mot* tab;                   // conteneur alloué en mémoire dynamique
-    unsigned int nbMot;
-};
+void initialiser(ConteneurTDE& c, unsigned int capa, unsigned int p) {
+	assert((capa > 0) && (p > 0));
+	c.capacite = capa;
+	c.pasExtension = p;
+	c.tab = new Mot[capa];
+}
 
-/**
- * @brief Initialise un conteneur d'items
- * Allocation en mémoire dynamique du conteneur d'items
- * de capacité (capa) extensible par pas d'extension (p)
- * @see detruire, pour sa désallocation en fin d'utilisation
- * @param[out] c : le conteneur d'items
- * @param [in] capa : capacité du conteneur
- * @param [in] p : pas d'extension de capacité
- * @pre capa>0 et p>0
- */
-void initialiser(ConteneurTDE& t, unsigned int c, unsigned int p);
+void detruire(ConteneurTDE& c) {
+	delete[] c.tab;
+	c.tab = NULL;
+}
 
-/**
- * @brief Désalloue un conteneur d'items en mémoire dynamique
- * @see initialiser, le conteneur d'items a déjà été alloué
- * @param[out] c : le conteneur d'items
- */
-void detruire(ConteneurTDE& t);
+char lire(const ConteneurTDE& c, unsigned int i, unsigned int v) {
+	assert(i < c.capacite);
+	return c.tab[i][v];
+}
 
-/**
- * @brief Lecture d'un item d'un conteneur d'items
- * @param[in] c : le conteneur d'items
- * @param[in] i : la position de l'item dans le conteneur
- * @return l'item à la position i
- * @pre i < c.capacite
- */
-char lire(const ConteneurTDE& c, unsigned int i, unsigned int v);
-
-/**
- * @brief Ecrire un item dans un conteneur d'items
- * @param[in,out] c : le conteneur d'items
- * @param[in] i : la position où ajouter/modifier l'item
- * @param[in] it : l'item à écrire
- */
-void ecrire(ConteneurTDE& t, unsigned int i, const Item& it);
-/**
- * @brief Récupère le Mot saisi et le stock
- * @param[in] LMot : le conteneur dans lequel le Mot est stocké
- */
-void récupérer(ConteneurTDE& LMot);
+void ecrire(ConteneurTDE& c, unsigned int i, const Item& it) {
+	if (i >= c.capacite) {
+		/* Stratégie de réallocation proportionnelle au pas d'extension :
+		 * initialisez la nouvelle taille du conteneur (newTaille)
+		 * à i * c.pasExtension */
+		unsigned int newTaille = (i + 1) * c.pasExtension;
+		/* Allouez en mémoire dynamique un nouveau tableau (newT)
+		 * à cette nouvelle taille*/
+		Item* newT = new Item[newTaille];
+		/* Recopiez les items déjà stockés dans le conteneur */
+		for (unsigned int i = 0; i < c.capacite; ++i)
+			strcpy(newT[i], c.tab[i]);
+		/* Désallouez l'ancien tableau support du conteneur */
+		delete[] c.tab;
+		/* Actualiser la mise à jour du conteneur en mémoire dynamique
+		 * Faites pointer le tableau support du conteneur
+		 * sur le nouveau tableau en mémoire dynamique */
+		c.tab = newT;
+		/* Actualisez la taille du conteneur */
+		c.capacite = newTaille;
+	}
+	/* Ecriture de l'item (it) à la position i dans le conteneur */
+	strcpy(c.tab[i], it);
+}
+void récupérer(ConteneurTDE& LMot) {
+	Mot buffer;
+	unsigned int i = 0;
+	do {
+		saisir(buffer);
+		if (strcmp(buffer, "*") == 1) {
+			ecrire(LMot, i, buffer);
+			++LMot.nbMot;
+			++i;
+		}
+	} while (strcmp(buffer, "*") == 1);
+}
