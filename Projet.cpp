@@ -108,3 +108,18 @@ void extraction(ConteneurTDE LMot1, ConteneurTDE LMot2) {
 	detruire(dMot);
 	
 }
+void Comparaison(ConteneurTDE LMot1, ConteneurTDE LMot2) {
+	Liste dMot;
+	initialiser(dMot, 10, 2);
+	for (unsigned int k = 0; k < LMot2.nbMot; k++) {
+		for (unsigned int j = 0; j < LMot1.nbMot; j++) {
+			if (strcmp(LMot2.tab[k], LMot1.tab[j]) == 0)
+			{
+				inserer(dMot, dMot.nb, LMot2.tab[k]);
+			}
+		}
+	}
+	canonique(dMot);
+	detruire(dMot);
+
+}
