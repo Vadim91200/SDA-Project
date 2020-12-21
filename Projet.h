@@ -1,12 +1,11 @@
 #ifndef _COMPTEUR_
 #include "Liste.h"
 /**
- * @file Compteur.h
+ * @file Projet.h
  * Projet SDA_Boggle
  * @author GOICHOT, GULDAS
  * @version 1 - 06/12/2020
  * @brief Le compteur de point
- * Structures de données et algorithmes - DUT1 Paris Descartes
  */
  /**
   * @brief Compte le nombre de points d'une liste
