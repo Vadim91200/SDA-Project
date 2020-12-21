@@ -22,4 +22,10 @@ void canonique(Liste dMot);
 * @param[In] La seconde liste 
 */
 void extraction(ConteneurTDE LMot1, ConteneurTDE LMot2);
+/**
+* @brief Affiche les mots de la seconde liste apparaissant dans la première
+* @param[In] La première liste
+* @param[In] La seconde liste
+*/
+void Comparaison(ConteneurTDE LMot1, ConteneurTDE LMot2);
 #endif
