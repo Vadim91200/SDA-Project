@@ -1,16 +1,15 @@
 #include <iostream>
 #include <cstring>
-#include "Compteur.h"
+#include "Projet.h"
 #include "Mot.h"
 #include "Liste.h"
 #pragma warning(disable : 4996)
 /**
- * @file Compteur.cpp
+ * @file Projet.cpp
  * Projet SDA_Boggle
  * @author GOICHOT, GULDAS
  * @version 1 - 06/12/2020
- * @brief Le Compteur de point
- * Structures de données et algorithmes - DUT1 Paris Descartes
+ * @brief Fichier contenant les algorithmes du Projet
  */
  /**
   * @brief Compte le nombre de points d'une liste
